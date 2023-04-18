@@ -1,9 +1,8 @@
-let timer;
+let mutationTimer;
+let communicationTimer;
 let data = [];
 
 async function sendToAll () {
-  data.push(data.length + 1);
-
   const clients = await self.clients.matchAll()
 
   clients.forEach(client => {
@@ -11,7 +10,11 @@ async function sendToAll () {
   });
 }
 
-timer = setInterval(sendToAll, 1000);
+mutationTimer = setInterval(() => {
+  data.push(data.length + 1);
+}, 1000);
+
+communicationTimer = setInterval(sendToAll, 1000);
 
 self.addEventListener('install', function(event) {
   event.waitUntil(async function() {

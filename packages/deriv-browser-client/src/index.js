@@ -13,7 +13,7 @@ if ('serviceWorker' in navigator) {
         return;
       }
 
-      navigator.serviceWorker.controller.postMessage('test');
+      navigator.serviceWorker.controller?.postMessage?.('test');
     }, function(err) {
       console.log('Service worker registration failed: ', err);
     });
