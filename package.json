@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "workspaces": [
+    "./packages/deriv-browser-client",
+    "./packages/dashboard",
+    "./packages/example1",
+    "./packages/example2"
+  ],
+  "scripts": {
+    "start": "npm run build --workspaces & node deployLocal.js"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "debounce": "^1.2.1",
+    "servatron": "^2.4.3"
+  }
+}
