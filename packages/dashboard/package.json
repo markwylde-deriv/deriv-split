@@ -12,7 +12,9 @@
   "keywords": [],
   "author": "",
   "dependencies": {
-    "deriv-browser-client": "../deriv-browser-client"
+    "deriv-browser-client": "../deriv-browser-client",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "license": "ISC",
   "devDependencies": {

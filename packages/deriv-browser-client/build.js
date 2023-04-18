@@ -5,8 +5,12 @@ import debounce from 'debounce';
 async function build() {
   esbuild.buildSync({
     bundle: true,
-    entryPoints: ['src/worker.js'],
+    entryPoints: ['./src/worker.ts'],
     outdir: 'dist',
+    loader: {
+      '.ts': 'ts',
+      '.tsx': 'tsx',
+    },
     sourcemap: true
   });
 }
