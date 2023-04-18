@@ -59,15 +59,18 @@ async function buildAll () {
 
 await fs.rm('dist', { recursive: true, force: true });
 
-chokidar.watch(`packages/*/src/**/*`, { ignoreInitial: false }).on('all', debounce(buildAll, 100));
+if (process.argv[2] === '--watch' || process.argv[2] === '-w') {
+  chokidar.watch(`packages/*/src/**/*`, { ignoreInitial: false }).on('all', debounce(buildAll, 100));
 
+  const staticHandler = servatron({
+    directory: './dist',
+    spa: true,
+    spaIndex: 'index.html'
+  });
 
-const staticHandler = servatron({
-  directory: './dist',
-  spa: true,
-  spaIndex: 'index.html'
-});
+  http.createServer(staticHandler).listen(8000);
 
-http.createServer(staticHandler).listen(8000);
-
-console.log('Listening on', 'http://localhost:8000');
+  console.log('Listening on', 'http://localhost:8000');
+} else {
+  buildAll();
+}

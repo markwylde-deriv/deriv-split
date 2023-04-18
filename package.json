@@ -7,7 +7,9 @@
     "./packages/example2"
   ],
   "scripts": {
-    "start": "npm run build --workspaces & node deployLocal.js"
+    "start": "npm run watch",
+    "build": "npm run build --workspaces & node deployLocal.js",
+    "watch": "npm run build --workspaces & node deployLocal.js --watch"
   },
   "devDependencies": {
     "chokidar": "^3.5.3",
