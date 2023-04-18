@@ -11,6 +11,9 @@ async function build() {
       '.ts': 'ts',
       '.tsx': 'tsx',
     },
+    define: {
+      'process.env.NODE_ENV': '"' + process.env.NODE_ENV + '"'
+    },
     sourcemap: true
   });
 }
